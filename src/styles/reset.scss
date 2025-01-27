@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    background: none;
+}
+
+/* 确保所有元素继承border-box */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/* 设置html元素的基础box-sizing */
+html {
+    box-sizing: border-box;
+}
+
+/* 移除列表样式 */
+ul,
+ol {
+    list-style: none;
+}
+
+/* 移除表单元素的默认样式 */
+button,
+input,
+select,
+textarea {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+/* 确保图片没有默认边框和间距 */
+img {
+    border: none;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 移除链接的默认样式 */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a,
+img {
+    -webkit-touch-callout: none;
+    /* 禁止长按链接与图片弹出菜单 */
+    -webkit-user-drag: none;
+    /* 禁止长按链接与图片拖动 */
+
+}
