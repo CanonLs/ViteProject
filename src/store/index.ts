@@ -56,7 +56,7 @@ import { initValueFn } from "./initialState";
  * // 获取modalFrame状态
  * const modalState = myStore.use.modalFrameState()
  */
-const myStore = createSelectors(
+export const myStore = createSelectors(
     createWithEqualityFn<IStore>()(
         immer(
             devtools(
@@ -72,4 +72,3 @@ const myStore = createSelectors(
         ),
         shallow
     ));
-export default myStore;

@@ -1,7 +1,13 @@
-@mixin FS {
+@mixin GFS {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
+
+$bodyColor: #ffffff;
+$rootFontColor: #000000;
+$tempMarginTop: 100px;
+$enterFramePadding: 10px;
+$enterFrameFontSize: 30px;

@@ -1,6 +1,6 @@
-interface IModalFrameState {
+export interface IModalFrameState {
 	visible: boolean;
-	content: string;
+	content?: string;
 	autoClose?: number;
 	spinShow?: boolean;
 	afterClose?: () => void;

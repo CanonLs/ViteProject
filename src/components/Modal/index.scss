@@ -1,0 +1,17 @@
+.semi-modal {
+	width: fit-content;
+	line-height: unset;
+	.modelContentBox {
+		padding: 15px 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-width: 200px;
+	}
+	.modelContent {
+		// margin: 30px 0;
+		text-align: center;
+		font-size: 30px;
+		// margin-bottom: 10px;
+	}
+}

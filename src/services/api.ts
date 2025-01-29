@@ -30,7 +30,10 @@ const getErrorCode = (state: number): string => {
 };
 
 // API基础URL，从环境变量中获取
-const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
+const baseUrl = import.meta.env.MODE == 'production' ? import.meta.env.VITE_API_BASE_URL : "";
+
+
+
 
 /**
  * API请求参数接口

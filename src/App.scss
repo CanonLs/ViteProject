@@ -1,4 +1,45 @@
+/* 全局根样式配置 */
+:root {
+	/* 设置全局字体族，按优先级排序 */
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	/* 设置行高为1.5倍 */
+	line-height: 1.5;
+	/* 设置字体粗细为400(normal) */
+	font-weight: 400;
+
+	/* 支持浅色/深色主题切换 */
+	color-scheme: light dark;
+	/* 设置文本颜色为白色，透明度0.87 */
+	color: rgba(255, 255, 255, 0.87);
+	/* 设置背景色为深色 */
+	background-color: #242424;
+
+	/* 禁用字体合成（避免伪粗体/斜体） */
+	font-synthesis: none;
+	/* 优化文本渲染效果 */
+	text-rendering: optimizeLegibility;
+	/* 启用字体平滑效果（针对Webkit和Mozilla内核） */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* 移除移动端点击高亮效果 */
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	/* 禁止iOS设备上的文字大小自动调整 */
+	-webkit-text-size-adjust: 100%;
+	/* 禁止用户选择文本 */
+	user-select: none;
+	/* 禁止页面滚动回弹效果 */
+	overscroll-behavior: none;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
 #root {
-  background: #8f1911;
-  @include FS;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background: transparent;
 }

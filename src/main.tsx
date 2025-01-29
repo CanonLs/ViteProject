@@ -6,12 +6,13 @@ import { useGSAP } from "@gsap/react";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import '@/mocks/browser'
 import '@/styles/reset.scss'
-import './index.css'
 
+if (import.meta.env.MODE === 'development' && import.meta.env.VITE_CONSOLE == "true") new (await import('vconsole')).default();
+console.log(`${import.meta.env.VITE_MODEL_NAME}--路由模式:${import.meta.env.VITE_ROUTER_TYPE}`);
 
 gsap.registerPlugin(useGSAP, ScrollToPlugin);
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Router />
-  </StrictMode>,
+  </StrictMode>
 )

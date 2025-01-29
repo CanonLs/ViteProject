@@ -1,3 +1,11 @@
-.btn{
-    width: 750px;
+.Index {
+	@include GFS;
+
+	.btn {
+		width: 100px;
+	}
+	.sbImg {
+		width: 556px;
+		height: 630px;
+	}
 }
