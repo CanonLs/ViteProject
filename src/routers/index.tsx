@@ -6,7 +6,9 @@ import RouteJumpAni from "@layout/routeJumpAni";
 //引入组件
 import Root from "@/App";
 import Index from "@/pages/Index";
+import About from "@/pages/About";
 import Error from "@/pages/Error";
+import Login from "@/pages/Login";
 //引入懒加载组件
 // const About = lazy(() => import("../page/About"));
 
@@ -19,14 +21,30 @@ const routeConfiguration = [
 			{
 				path: "/",
 				element: (
+					<Index />
+				),
+			},
+			{
+				path: "/login",
+				element: (
 					<RouteJumpAni>
-						<Index />
+						<Login />
+					</RouteJumpAni>
+				),
+			},
+			{
+				path: "/about",
+				element: (
+					<RouteJumpAni>
+						<About />
 					</RouteJumpAni>
 				),
 			}
 		],
 	},
-	{ path: "*", element: <Navigate to="/" replace={true} /> },
+	{
+		path: "*", element: <Navigate to="/" replace={true} />
+	},
 ];
 const routerMode = import.meta.env.VITE_ROUTER_TYPE;
 

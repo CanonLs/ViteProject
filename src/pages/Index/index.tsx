@@ -1,5 +1,6 @@
 import { myStore } from '@/store'
-import { openModal } from "@utils/modal";
+import { useNavigate } from 'react-router-dom';
+
 import Api from "@services/api";
 
 import styles from "./index.module.scss";
@@ -8,37 +9,54 @@ import styles from "./index.module.scss";
 // const fz = new URL('@assets/images/indexTip.png', import.meta.url).href;
 // console.log(fz);
 
+
 import { loadImages } from "@/utils/loadImage";
 const urls = loadImages([`@assets/images/indexTip.png`, '../../assets/images/a_副本2/indexTipa.png', '../../assets/images/a/indexTipa.png']);
+console.log(urls);
 
 function Index() {
 
+
     const count = myStore.use.count()
     const inc = myStore.use.inc()
-    const clickModel = () => {
-        console.log(getUsers());
 
-        openModal({
-            content: "加载中",
-            afterClose: () => {
-                console.log("afterClose")
-            },
-            // autoClose: 2000,
-            spinShow: true
-        })
+    const navigate = useNavigate();
 
+    const clickModel = async () => {
+
+        // navigate("/login", { replace: true });
+        // return
+
+
+        const users = await getUsers();
+        console.log(users);
+
+        myStore.setState({
+            modalFrameState: {
+                visible: true,
+                content: "2秒后自动关闭",
+                autoClose: 2000,
+                spinShow: true,
+                afterClose: () => {
+                    console.log("afterClose")
+                },
+            }
+        });
     }
 
     const getUsers = async () => {
         try {
             const response = await Api({
-                url: '/api/users',
+                url: 'api/users',
                 method: 'GET',
                 param: { page: 1 }
             });
-            console.log(response.data);
+            return response.data;
         } catch (error) {
-            console.error(error);
+            return {
+                success: false,
+                message: error instanceof Error ? error.message : '请求失败'
+            };
         }
     };
 

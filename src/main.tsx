@@ -11,6 +11,7 @@ if (import.meta.env.MODE === 'development' && import.meta.env.VITE_CONSOLE == "t
 console.log(`${import.meta.env.VITE_MODEL_NAME}--路由模式:${import.meta.env.VITE_ROUTER_TYPE}`);
 
 gsap.registerPlugin(useGSAP, ScrollToPlugin);
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Router />

@@ -30,7 +30,7 @@ const getErrorCode = (state: number): string => {
 };
 
 // API基础URL，从环境变量中获取
-const baseUrl = import.meta.env.MODE == 'production' ? import.meta.env.VITE_API_BASE_URL : "";
+const baseUrl = import.meta.env.MODE == 'production' ? import.meta.env.VITE_API_BASE_URL : "/";
 
 
 
@@ -84,9 +84,10 @@ const baseApiRequest = async ({ url, param, method = "GET" }: Iapi): Promise<IAp
                 body: formData,
             });
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+
+            // if (!response.ok) {
+            //     throw new Error(`HTTP error! status: ${response.status}`);
+            // }
 
             const data = await response.json();
             return { data, code: getErrorCode(data.error_code), error_code: data.error_code };
@@ -95,6 +96,13 @@ const baseApiRequest = async ({ url, param, method = "GET" }: Iapi): Promise<IAp
             const finalUrl = param ? `${baseUrl + url}?${new URLSearchParams(param)}` : baseUrl + url;
             const response = await fetch(finalUrl, {
                 method: "GET",
+            });
+            console.log('GET响应:', {
+                url: finalUrl,
+                status: response.status,
+                statusText: response.statusText,
+                headers: Object.fromEntries(response.headers.entries()),
+                body: await response.clone().json()
             });
 
             if (!response.ok) {

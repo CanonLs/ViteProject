@@ -1,9 +1,6 @@
 import { http, HttpResponse } from 'msw'
 
-interface IDataType{
-    username:string
-    password:string
-}
+
 // 定义模拟的API处理程序
 export const handlers = [
     // 示例：模拟GET请求
@@ -14,9 +11,11 @@ export const handlers = [
         ])
     }),
 
-  // 示例：模拟POST请求
-  http.post<never, IDataType>('/api/login', async ({ request }) => {
-        const { username, password } = await request.json()
+    // 示例：模拟POST请求
+    http.post('/api/login', async ({ request }) => {
+        const formData = await request.formData()
+        const username = formData.get('username') as string
+        const password = formData.get('password') as string
 
         if (username === 'admin' && password === '123456') {
             return HttpResponse.json({
@@ -24,7 +23,6 @@ export const handlers = [
                 token: 'mock-jwt-token'
             })
         }
-
         return new HttpResponse(
             JSON.stringify({
                 status: 'error',
