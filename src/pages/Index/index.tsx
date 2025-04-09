@@ -1,5 +1,4 @@
 import { myStore } from '@/store'
-import { useNavigate } from 'react-router-dom';
 
 import Api from "@services/api";
 
@@ -19,16 +18,9 @@ function Index() {
 
     const count = myStore.use.count()
     const inc = myStore.use.inc()
-
-    const navigate = useNavigate();
-
     const clickModel = async () => {
-
-        // navigate("/login", { replace: true });
-        // return
-
-
         const users = await getUsers();
+
         console.log(users);
 
         myStore.setState({
